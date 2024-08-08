@@ -1,1 +1,65 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
+local Window = OrionLib:MakeWindow({Name = "spooky.pub", HidePremium = false, SaveConfig = true, ConfigFolder = "spooky.pub"})
+
+local Tab = Window:MakeTab({
+    Name = "Combat",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local LongNeckSection = MiscTab:AddSection({
+	Name = "LongNeck"
+})
+
+local isEnabled = false
+local neckSize = 7.5
+
+LongNeckSection:AddToggle({
+	Name = "LongNeck",
+	Default = false,
+	Callback = function(toggleState)
+		isEnabled = toggleState
+	end    
+})
+
+LongNeckSection:AddSlider({
+	Name = "Neck Length",
+	Min = 1,
+	Max = 7.5,
+	Default = 1,
+	Color = Color3.fromRGB(255, 255, 255),
+	Increment = 0.1,
+	ValueName = "Neck length",
+	Callback = function(value)
+		neckSize = value
+	end    
+})
+
+LongNeckSection:AddBind({
+	Name = "LongNeck Bind",
+	Default = Enum.KeyCode.V,
+	Hold = false,
+	Callback = function()
+		isEnabled = not isEnabled
+	end    
+})
+
+OrionLib:Init()
+
+-- locals
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local LongNeck = Character:WaitForChild("Bottom"):WaitForChild("PrismaticConstraint")
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if isEnabled then
+        LongNeck.LowerLimit = neckSize
+        LongNeck.UpperLimit = neckSize
+    else
+        LongNeck.LowerLimit = 1
+        LongNeck.UpperLimit = 3
+    end
+end)
