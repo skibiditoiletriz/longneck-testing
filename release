@@ -11,6 +11,7 @@ function LongNeck()
            local LongNeck = Workspace.Ignore.LocalCharacter.Bottom.PrismaticConstraint
            LongNeck.LowerLimit = 8.3
            LongNeck.UpperLimit = 8.3
+           wait (.0001)
         end
        end 
 
