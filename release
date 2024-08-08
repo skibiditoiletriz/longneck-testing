@@ -12,6 +12,6 @@ local HitboxSection = CombatTab:AddSection({
 	Name = "Hitbox"
 })
 
-local LongneckSection = CombatTab:AddSection({
-	Name = "Longneck"
+local LongNeckSection = CombatTab:AddSection({
+	Name = "LongNeck"
 })
