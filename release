@@ -2,40 +2,64 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 local Window = OrionLib:MakeWindow({Name = "spooky.pub", HidePremium = false, IntroEnabled = false, IntroText = "spooky.pub", SaveConfig = true, ConfigFolder = "spooky.pub"})
 
--- Values
-_G.LongNeck = true
-
-
--- Functions
-function LongNeck()
-       while _G.Longneck == true do
-           local LongNeck = Workspace.Ignore.LocalCharacter.Bottom.PrismaticConstraint
-           LongNeck.LowerLimit = 8.3
-           LongNeck.UpperLimit = 8.3
-           wait (.0001)
-        end
-       end 
-
--- Tabs
 local MiscTab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
-
-local LongNeckSection = CombatTab:AddSection({
+})
+ 
+local LongNeckSection = MiscTab:AddSection({
 	Name = "LongNeck"
 })
-
+ 
+local isEnabled = true
+local neckSize = 8.3
+ 
 LongNeckSection:AddToggle({
 	Name = "LongNeck",
 	Default = false,
 	Callback = function(toggleState)
-		_G.LongNeck = Value
-                LongNeck()
+		isEnabled = toggleState
 	end    
 })
-
-
-
-end
+ 
+LongNeckSection:AddSlider({
+	Name = "Neck Length",
+	Min = 1,
+	Max = 8.3,
+	Default = 1,
+	Color = Color3.fromRGB(255, 255, 255),
+	Increment = 0.1,
+	ValueName = "Neck length",
+	Callback = function(value)
+		neckSize = value
+	end    
+})
+ 
+LongNeckSection:AddBind({
+	Name = "LongNeck Bind",
+	Default = Enum.KeyCode.Z,
+	Hold = false,
+	Callback = function()
+		isEnabled = not isEnabled
+	end    
+})
+ 
 OrionLib:Init()
+ 
+-- locals
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local LongNeck = Character:WaitForChild("Bottom"):WaitForChild("PrismaticConstraint")
+ 
+game:GetService("RunService").RenderStepped:Connect(function()
+    if isEnabled then
+        LongNeck.LowerLimit = neckSize
+        LongNeck.UpperLimit = neckSize
+    else
+        LongNeck.LowerLimit = 1000000000000000
+        LongNeck.UpperLimit = 1000000000000000
+    end
+end)
