@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
  
-local Window = OrionLib:MakeWindow({Name = "spooky.pub", HidePremium = false, SaveConfig = true, ConfigFolder = "spooky.pub"})
+local Window = OrionLib:MakeWindow({Name = "spooky.pub", HidePremium = false, IntroEnabled = false, IntroText = "spooky.pub", SaveConfig = true, ConfigFolder = "spooky.pub"})
  
 local CombatTab = Window:MakeTab({
 	Name = "Combat",
