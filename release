@@ -34,7 +34,7 @@ local LongNeckSection = MiscTab:AddSection({
 	Name = "LongNeck"
 })
 
-local isEnabled = false
+local isEnabled = true
 local neckSize = 8.3
 
 LongNeckSection:AddToggle({
