@@ -6,23 +6,15 @@ _G.LongNeck = true
 
 
 -- Functions
+function LongNeck()
        while _G.Longneck == true do
            local LongNeck = Workspace.Ignore.LocalCharacter.Bottom.PrismaticConstraint
-        LongNeck.LowerLimit = 8.3
-        LongNeck.UpperLimit = 8.3
+           LongNeck.LowerLimit = 8.3
+           LongNeck.UpperLimit = 8.3
+        end
+       end 
 
 -- Tabs
-local CombatTab = Window:MakeTab({
-	Name = "Combat",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
- 
-local HitboxSection = CombatTab:AddSection({
-	Name = "Hitbox"
-})
-
--- Misc Tab
 local MiscTab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
@@ -43,3 +35,5 @@ LongNeckSection:AddToggle({
 
 
 
+end
+OrionLib:Init()
