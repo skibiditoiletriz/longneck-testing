@@ -32,5 +32,14 @@ local LongNeckSection = CombatTab:AddSection({
 	Name = "LongNeck"
 })
 
+LongNeckSection:AddToggle({
+	Name = "LongNeck",
+	Default = false,
+	Callback = function(toggleState)
+		_G.LongNeck = Value
+                LongNeck()
+	end    
+})
+
 
 
