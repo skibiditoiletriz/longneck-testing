@@ -48,7 +48,7 @@ LongNeckSection:AddToggle({
 LongNeckSection:AddSlider({
 	Name = "Neck Length",
 	Min = 1,
-	Max = 7.5,
+	Max = 8.3,
 	Default = 1,
 	Color = Color3.fromRGB(255, 255, 255),
 	Increment = 0.1,
@@ -60,7 +60,7 @@ LongNeckSection:AddSlider({
 
 LongNeckSection:AddBind({
 	Name = "LongNeck Bind",
-	Default = Enum.KeyCode.V,
+	Default = Enum.KeyCode.Z,
 	Hold = false,
 	Callback = function()
 		isEnabled = not isEnabled
@@ -81,7 +81,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
         LongNeck.LowerLimit = neckSize
         LongNeck.UpperLimit = neckSize
     else
-        LongNeck.LowerLimit = 1
-        LongNeck.UpperLimit = 3
+        LongNeck.LowerLimit = 1000000000000000
+        LongNeck.UpperLimit = 1000000000000000
     end
 end)
