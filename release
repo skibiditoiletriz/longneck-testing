@@ -2,10 +2,32 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 local Window = OrionLib:MakeWindow({Name = "spooky.pub", HidePremium = false, SaveConfig = true, ConfigFolder = "spooky.pub"})
 
-local Tab = Window:MakeTab({
-    Name = "Combat",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
+local CombatTab = Window:MakeTab({
+	Name = "Combat",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local HitboxSection = CombatTab:AddSection({
+	Name = "Hitbox"
+})
+
+local EspTab = Window:MakeTab({
+	Name = "Esp",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local WorldTab = Window:MakeTab({
+	Name = "World",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local MiscTab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
 local LongNeckSection = MiscTab:AddSection({
